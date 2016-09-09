@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title></title>
+	<link rel="stylesheet" href="">
+</head>
+<body ng-app="app" >
+	<div ng-controller="contr1">{{username}}</div>
+	<div ng-controller="contr1">{{username | uppercase}}</div>
+	<div ng-controller="contr1">{{"hello world" | uppercase}}</div>
+	<div ng-controller="contr1">{{"HELLO WORLD" | lowercase}}</div>
+	<div ng-controller="contr1">{{ 111 | currency}}</div>
+	<div ng-controller="contr1">{{ 1473298625650 | date:"yyyy-MM-hh-ss"}}</div>
+	<div ng-controller="contr1">{{ 1473298625650 | date:"ss"}}</div>
+	<div ng-controller="contr1">{{ 1473298625650 | date:"ss"}}</div>
+	<div ng-controller="contr1">{{ 1473298625650 | date:"yyyy/MM/dd"}}</div>
+
+<!-- 	<div ng-controller="contr2">
+		<div ng-controller="contr1">
+			{{num}}
+		</div>
+	</div> -->
+	<script type="text/javascript" src="app/bower_components/angular/angular.js"></script>
+	<script type="text/javascript">
+		// uppercase 字符串转化为大写
+		// lowercase 字符串转换为小写
+		var myapp = angular.module("app",[]);
+		//.controller("控制器名字",function(params){函数执行体});
+		//.conteroller("控制器名字",["依赖的内置对象","依赖的内置对象",function(params){函数执行体}])
+		// 建议采用第二种方式,是为了解决代码压缩构建后找不到$scope等内置对象的问题
+		myapp.controller("contr1",["$scope","$timeout",function($scope,$timeout){
+				$scope.username = "hello";
+				$scope.num = 111;
+		}]);
+		myapp.controller("contr2",["$scope","$timrout",function($scope,$timeout){
+			$scope.price = 25;
+			$scope.count = 8;
+		}])
+		// currency 将数字转换为货币单位
+
+		// ng内置函数 日期格式转换
+		//{{ 毫秒值 | date:"yyyy-MM-dd hh-mm-ss"}} HH代表24进制
+	</script>
+</body>
+</html>
